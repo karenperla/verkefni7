@@ -34,9 +34,9 @@ function start() {
 function play() {
   let games = 0;
   let correct = 0; 
-  let qTime;
   let qStart;
   let qEnd;
+  let qTime;
   let times = [];
   let ans;
 
@@ -51,11 +51,13 @@ function play() {
     if (ans === null) {
       return alert(`Hætta í leik.`);
     }
+
     else if (parseInt(ans) === problem.answer) {
       correct++;
     }
 
     games++;
+
   } while (!(games === GAMES_TO_PLAY));
   const end = new Date();
 
@@ -68,7 +70,7 @@ function play() {
 
   avg = avg / (times.length);
 
-  alert(`Þú svaraðir ${correct} af ${GAMES_TO_PLAY} dæmum rétt á ${time.toFixed(2)} sekúndum.\n Meðalrétt svör á sekúndu eru ${avg.toFixed(2)}`)
+  alert(`Þú svaraðir ${correct} af ${GAMES_TO_PLAY} dæmum rétt á ${time.toFixed(2)} sekúndum. \n Meðalrétt svör á sekúndu eru ${avg.toFixed(2)}`)
 }
 
 /**
