@@ -32,7 +32,43 @@ function start() {
  *
  */
 function play() {
-  
+  let games = 0;
+  let correct = 0; 
+  let qTime;
+  let qStart;
+  let qEnd;
+  let times = [];
+  let ans;
+
+  const start = new Date();
+  do {
+    problem = ask();
+    qStart = new Date();
+    ans = prompt(`Hvað er ${problem.question}?`);
+    qEnd = new Date();
+    qTime = (qEnd - qStart) / 1000;
+    times.push(qTime);
+    if (ans === null) {
+      return alert("Hætta í leik.");
+    }
+    else if (parseInt(ans) === problem.answer) {
+      correct++;
+    }
+
+    games++;
+  } while (!(games === GAMES_TO_PLAY));
+  const end = new Date();
+
+  const time = (end - start) / 1000;
+
+  let avg = 0;
+  for (var i = 0; i < time.length; i++) {
+    avg = avg + times[i];
+  }
+
+  avg = avg / (times.length);
+
+  alert(`Þú svaraðir ${correct} af ${GAMES_TO_PLAY} dæmum rétt á ${time.toFixed(2)} sekúndum.\n Meðalrétt svör á sekúndu eru ${avg.toFixed(2)}`)
 }
 
 /**
@@ -50,6 +86,70 @@ function play() {
  * Sniðugt væri að færa það að búa til spurningu í nýtt fall sem ask() kallar í.
  */
 function ask() {
+  const operators = ["+", "-", "*", "/"];
+  const choose = operators[randomNumber(0, operators.length - 1)];
+  let num1 = 0;
+  let num2 = 0;
+  let answer = 0;
+  let question;
+  let problem;
+
+  switch (choose) {
+    case "+":
+      num1 = randomNumber(1, 100);
+      num2 = randomNumber(1, 100);
+      answer = num1 + num2;
+      question = `${num1} + ${num2}`;
+
+      problem = {
+        answer: answer,
+        question: question
+      }
+
+      return problem;
+    
+    case "-":
+      num1 = randomNumber(1, 100);
+      num2 = randomNumber(1, 100);
+      answer = num1 - num2;
+      question = `${num1} - ${num2}`;
+
+      problem = {
+        answer: answer,
+        question: question
+      }
+
+      return problem;
+
+    case "*": 
+      num1 = randomNumber(1, 10);
+      num2 = randomNumber(1, 10);
+      answer = num1 * num2;
+      question = `${num1} * ${num2}`;
+
+      problem = {
+        answer: answer,
+        question: question
+      }
+
+      return problem;
+
+    case "/":
+      num1 = randomNumber(2, 10);
+      num2 = num1 * randomNumber(2,10);
+      answer = num2 / num1;
+      question = `${num2} / ${num1}`;
+
+      problem = {
+        answer: answer,
+        question: question
+      }
+
+      return problem;
+
+    default:
+      break;
+  }
 }
 
 /**
