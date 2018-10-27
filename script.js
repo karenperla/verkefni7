@@ -13,11 +13,11 @@ const GAMES_TO_PLAY = 10;
  * Eftir leik er notanda boðið að spila annan leik, ef ekki hættir forrit.
  */
 function start() {
-  alert("Markmiðið er að svara eins mörgum af 10 dæmum rétt eins hratt og mögulegt er.");
+  alert(`Markmiðið er að svara eins mörgum af 10 dæmum rétt eins hratt og mögulegt er.`);
 
   do {
     play();
-  } while (confirm("Spila annan leik?"));
+  } while (confirm(`Spila annan leik?`));
 }
 
 /**
@@ -49,7 +49,7 @@ function play() {
     qTime = (qEnd - qStart) / 1000;
     times.push(qTime);
     if (ans === null) {
-      return alert("Hætta í leik.");
+      return alert(`Hætta í leik.`);
     }
     else if (parseInt(ans) === problem.answer) {
       correct++;
@@ -86,7 +86,7 @@ function play() {
  * Sniðugt væri að færa það að búa til spurningu í nýtt fall sem ask() kallar í.
  */
 function ask() {
-  const operators = ["+", "-", "*", "/"];
+  const operators = [`+`, `-`, `*`, `/`];
   const choose = operators[randomNumber(0, operators.length - 1)];
   let num1 = 0;
   let num2 = 0;
@@ -95,7 +95,7 @@ function ask() {
   let problem;
 
   switch (choose) {
-    case "+":
+    case `+`:
       num1 = randomNumber(1, 100);
       num2 = randomNumber(1, 100);
       answer = num1 + num2;
@@ -108,7 +108,7 @@ function ask() {
 
       return problem;
     
-    case "-":
+    case  `-`:
       num1 = randomNumber(1, 100);
       num2 = randomNumber(1, 100);
       answer = num1 - num2;
@@ -121,7 +121,7 @@ function ask() {
 
       return problem;
 
-    case "*": 
+    case `*`: 
       num1 = randomNumber(1, 10);
       num2 = randomNumber(1, 10);
       answer = num1 * num2;
@@ -134,7 +134,7 @@ function ask() {
 
       return problem;
 
-    case "/":
+    case `/`:
       num1 = randomNumber(2, 10);
       num2 = num1 * randomNumber(2,10);
       answer = num2 / num1;
