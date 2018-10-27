@@ -13,7 +13,11 @@ const GAMES_TO_PLAY = 10;
  * Eftir leik er notanda boðið að spila annan leik, ef ekki hættir forrit.
  */
 function start() {
-  villa;
+  alert("Markmiðið er að svara eins mörgum af 10 dæmum rétt eins hratt og mögulegt er.");
+
+  do {
+    play();
+  } while (confirm("Spila annan leik?"));
 }
 
 /**
@@ -28,6 +32,7 @@ function start() {
  *
  */
 function play() {
+  
 }
 
 /**
