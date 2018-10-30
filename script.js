@@ -33,7 +33,7 @@ function start() {
  */
 function play() {
   let games = 0;
-  let correct = 0; 
+  let correct = 0;
   let qStart;
   let qEnd;
   let qTime;
@@ -49,7 +49,7 @@ function play() {
     qTime = (qEnd - qStart) / 1000;
     times.push(qTime);
     if (ans === null) {
-      return alert(`Hætta í leik.`);
+      return alert(`Hætta í leik?`);
     }
 
     else if (parseInt(ans) === problem.answer) {
@@ -64,13 +64,12 @@ function play() {
   const time = (end - start) / 1000;
 
   let avg = 0;
-  for (var i = 0; i < time.length; i++) {
+  for (var i = 0; i < times.length; i++) {
     avg = avg + times[i];
   }
-
   avg = avg / (times.length);
 
-  alert(`Þú svaraðir ${correct} af ${GAMES_TO_PLAY} dæmum rétt á ${time.toFixed(2)} sekúndum. \n Meðalrétt svör á sekúndu eru ${avg.toFixed(2)}`)
+  alert(`Þú svaraðir ${correct} af ${GAMES_TO_PLAY} dæmum rétt á ${time.toFixed(2)} sekúndum.\n Meðalrétt svör á sekúndu eru ${avg.toFixed(2)}`)
 }
 
 /**
@@ -109,8 +108,8 @@ function ask() {
       }
 
       return problem;
-    
-    case  `-`:
+
+    case `-`:
       num1 = randomNumber(1, 100);
       num2 = randomNumber(1, 100);
       answer = num1 - num2;
@@ -123,7 +122,7 @@ function ask() {
 
       return problem;
 
-    case `*`: 
+    case `*`:
       num1 = randomNumber(1, 10);
       num2 = randomNumber(1, 10);
       answer = num1 * num2;
@@ -138,7 +137,7 @@ function ask() {
 
     case `/`:
       num1 = randomNumber(2, 10);
-      num2 = num1 * randomNumber(2,10);
+      num2 = num1 * randomNumber(2, 10);
       answer = num2 / num1;
       question = `${num2} / ${num1}`;
 
@@ -157,7 +156,6 @@ function ask() {
 /**
  * Skilar tölu af handahófi á bilinu [min, max]
  */
-
 function randomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
